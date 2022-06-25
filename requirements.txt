@@ -1,2 +1,2 @@
-pytest
-selene>=2.0.b5
+pytest==7.1.2
+selene==2.0.b5
