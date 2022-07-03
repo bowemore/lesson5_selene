@@ -1,4 +1,4 @@
-from selene import have
+from selene import have, command
 from selene.support.shared import browser
 import calendar
 
@@ -21,6 +21,7 @@ city = 'Delhi'
 
 def test_submit_form():
     browser.open('/automation-practice-form')
+
     browser.element('#firstName').type(firstName)
     browser.element('#lastName').type(lastName)
     browser.element('#userEmail').type(userEmail)
@@ -36,7 +37,7 @@ def test_submit_form():
     browser.element('#currentAddress').type(currentAddress).press_tab()
     browser.element('#state input').type(state).press_tab()
     browser.element('#city input').type(city).press_enter()
-    browser.element('#submit').click()
+    browser.element('#submit').perform(command.js.scroll_into_view).click()
 
     browser.all('table tr').should(have.exact_texts(
         'Label Values',
